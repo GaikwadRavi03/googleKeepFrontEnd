@@ -1,1 +1,1 @@
-export default URL = 'http://localhost:4000/';
+export default URL = 'http://172.31.47.184:4000/';
