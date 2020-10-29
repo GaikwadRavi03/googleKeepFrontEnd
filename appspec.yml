@@ -9,6 +9,6 @@ hooks:
       timeout: 300
       runas: ubuntu
   AfterInstall:
-    - location: scripts/update.sh
+    - location: scripts/start.sh
       timeout: 300
       runas: ubuntu
