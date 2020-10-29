@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /dummy
+    destination: /
 hooks:
   BeforeInstall:
     - location: scripts/update.sh
