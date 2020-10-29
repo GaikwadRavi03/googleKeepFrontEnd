@@ -2,13 +2,13 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /client
+    destination: /dummy
 hooks:
   BeforeInstall:
     - location: scripts/update.sh
       timeout: 300
       runas: ubuntu
   AfterInstall:
-    - location: scripts/start.sh
+    - location: scripts/update.sh
       timeout: 300
       runas: ubuntu
