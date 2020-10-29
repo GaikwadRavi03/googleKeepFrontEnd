@@ -1,4 +1,2 @@
 #!/bin/bash
-
-sudo apt-get update
-
+echo "Hello Ravi this is ************update**************** script here"
