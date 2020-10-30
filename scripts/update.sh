@@ -1,4 +1,4 @@
 #!/bin/bash
 echo "Hello Ravi this is ************update**************** script here"
-cd /home/ubuntu/
+cd /client
 #sudo rm -rf client
