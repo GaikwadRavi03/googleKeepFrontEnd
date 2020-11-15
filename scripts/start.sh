@@ -1,6 +1,6 @@
 #!/bin/bash
 
-cd /client
+cd /googleKeepFrontEnd
 sudo npm i
 echo "----------------------npm build----------------------------"
 sudo npm run build
