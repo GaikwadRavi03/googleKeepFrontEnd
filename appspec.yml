@@ -2,7 +2,7 @@ version: 0.0
 os: linux
 files:
   - source: /
-    destination: /client
+    destination: /googleKeepFrontEnd
 hooks:
   BeforeInstall:
     - location: scripts/update.sh
