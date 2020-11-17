@@ -15,7 +15,7 @@ pipeline {
         }
         stage('SonarQube analysis') {
             steps {
-                withSonarQubeEnv('sonarqube-server') { 
+                withSonarQubeEnv('sonarQube') { 
                     // If you have configured more than one global server connection, you can specify its name
                     sh '/opt/sonarqube'
                 }
