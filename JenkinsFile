@@ -18,7 +18,7 @@ pipeline {
                 withSonarQubeEnv('sonarQube') { 
                     // If you have configured more than one global server connection, you can specify its name
                     sh 'echo "Hello Ravi Gaikwad"'
-                    sh '/home/ubuntu/sonar-scanner-4.5.0.2216-linux/conf/sonar-scanner.properties'
+                    sh '/home/ubuntu/sonar-scanner-4.5.0.2216-linux/bin/sonar-scanner'
                 }
             }
         }
