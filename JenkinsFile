@@ -17,7 +17,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonarQube') { 
                     // If you have configured more than one global server connection, you can specify its name
-                    sh 'sudo touch /home/ubuntu/ravi.txt'
+                    sh 'echo "Hello Ravi Gaikwad"'
                     sh '/home/ubuntu/sonar-scanner-4.5.0.2216-linux/bin/sonar-scanner'
                 }
             }
