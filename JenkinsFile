@@ -21,11 +21,6 @@ pipeline {
                 }
             }
         }
-        stage('Quality Gate') {
-            steps {
-                #waitForQualityGate abortPipeline: true
-            }
-        }
         stage('Build') { 
             steps { 
                 sh ''' #!/bin/bash
