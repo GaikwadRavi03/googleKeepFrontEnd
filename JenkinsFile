@@ -7,7 +7,7 @@ pipeline {
         stage('package creation') { 
             steps { 
                 sh ''' #!/bin/bash
-                cd /var/lib/jenkins/workspace/
+                sh 'echo ############################## Package Creation #####################################'
                 rsync -avzP -e 'ssh -i /my-mumbai-key.pem' /var/lib/jenkins/workspace/sonarQube ubuntu@13.232.87.186:/home/ubuntu/
                 echo ===> package creation on frontend server
                 '''
@@ -17,19 +17,21 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonarQube') { 
                     // If you have configured more than one global server connection, you can specify its name
-                    sh 'echo "Hello Ravi Gaikwad"'
+                    sh 'echo ############################## SonarQube analysis #####################################'
                     sh '/home/ubuntu/sonar-scanner-4.5.0.2216-linux/bin/sonar-scanner'
                 }
             }
         }
        stage("Quality Gate") {
             steps {
+                sh 'echo ############################## Quality Gate #####################################'
                 waitForQualityGate abortPipeline: true
             }
         }
         stage('Build') { 
             steps { 
                 sh ''' #!/bin/bash
+                sh 'echo ############################## Building App #####################################'
                 ssh -i /my-mumbai-key.pem ubuntu@13.232.87.186 'sudo rm -rf /home/ubuntu/keep-frontend'
                 ssh -i /my-mumbai-key.pem ubuntu@13.232.87.186 'mv /home/ubuntu/sonarQube /home/ubuntu/keep-frontend'
                 ssh -i /my-mumbai-key.pem ubuntu@13.232.87.186 'bash /home/ubuntu/buildJenkis.sh'
@@ -39,12 +41,14 @@ pipeline {
         }
         stage('Test') { 
             steps {
+                sh 'echo ############################## Testing App #####################################'
                 sh 'echo test case runs' 
             }
         }
         stage('deploy') { 
             steps {
                 sh ''' #!/bin/bash
+                sh 'echo ############################## Deploying App #####################################'
                 ssh -i /my-mumbai-key.pem ubuntu@13.232.87.186 'bash /home/ubuntu/deployJenkins.sh'
                 echo ===> deploy stage
                 '''
