@@ -69,8 +69,8 @@ class App extends Component {
         })
     }
 
-    render() [
-        // return (
+    render() {
+         return (
             <BrowserRouter>
                 <div className='app'>
 
