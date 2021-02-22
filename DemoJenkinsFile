@@ -18,9 +18,9 @@ pipeline {
             steps { 
                 sh ''' #!/bin/bash
                 echo "############################## Building App #####################################"
-                ssh -i /my-mumbai-key.pem ubuntu@13.127.69.203 'sudo rm -rf /home/ubuntu/googleKeepFrontEnd'
-                ssh -i /my-mumbai-key.pem ubuntu@13.127.69.203 'mv /home/ubuntu/demo-frontend /home/ubuntu/googleKeepFrontEnd'
-                ssh -i /my-mumbai-key.pem ubuntu@13.127.69.203 'bash /home/ubuntu/buildJenkis.sh'
+                ssh -i /my-aws-key.pem ubuntu@13.127.69.203 'sudo rm -rf /home/ubuntu/googleKeepFrontEnd'
+                ssh -i /my-aws-key.pem ubuntu@13.127.69.203 'mv /home/ubuntu/demo-frontend /home/ubuntu/googleKeepFrontEnd'
+                ssh -i /my-aws-key.pem ubuntu@13.127.69.203 'bash /home/ubuntu/buildJenkis.sh'
                 echo ===> Build stage
                 '''
             }
