@@ -1,2 +1,29 @@
-# googleKeepFrontEnd
-ok
+pipeline { 
+    agent any
+    options {
+        skipStagesAfterUnstable()
+    }
+    stages {
+        stage('package creation') { 
+            steps { 
+                sh ''' #!/bin/bash
+                echo "############################## Package Creation #####################################"
+                rsync -avzP -e 'ssh -i /my-mumbai-key.pem' /var/lib/jenkins/workspace/sonarQube ubuntu@13.232.41.179:/home/ubuntu/
+                echo ===> package creation on frontend server
+                '''
+            }
+        }
+
+        stage('Build') { 
+            steps { 
+                sh ''' #!/bin/bash
+                echo "############################## Building App #####################################"
+                ssh -i /my-mumbai-key.pem ubuntu@13.232.41.179 'sudo rm -rf /home/ubuntu/keep-frontend'
+                ssh -i /my-mumbai-key.pem ubuntu@13.232.41.179 'mv /home/ubuntu/demo-fromtend /home/ubuntu/keep-frontend'
+                ssh -i /my-mumbai-key.pem ubuntu@13.232.41.179 'bash /home/ubuntu/buildJenkis.sh'
+                echo ===> Build stage
+                '''
+            }
+        }
+    }
+}
