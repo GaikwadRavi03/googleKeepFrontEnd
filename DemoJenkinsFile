@@ -8,7 +8,7 @@ pipeline {
             steps { 
                 sh ''' #!/bin/bash
                 echo "############################## Package Creation #####################################"
-                rsync -avzP -e 'ssh -i /my-mumbai-key.pem' /var/lib/jenkins/workspace/sonarQube ubuntu@13.232.41.179:/home/ubuntu/
+                rsync -avzP -e 'ssh -i /my-aws-key.pem' /var/lib/jenkins/workspace/demo-frontend ubuntu@13.127.69.203:/home/ubuntu/
                 echo ===> package creation on frontend server
                 '''
             }
@@ -18,9 +18,9 @@ pipeline {
             steps { 
                 sh ''' #!/bin/bash
                 echo "############################## Building App #####################################"
-                ssh -i /my-mumbai-key.pem ubuntu@13.232.41.179 'sudo rm -rf /home/ubuntu/googleKeepFrontEnd'
-                ssh -i /my-mumbai-key.pem ubuntu@13.232.41.179 'mv /home/ubuntu/demo-fromtend /home/ubuntu/googleKeepFrontEnd'
-                ssh -i /my-mumbai-key.pem ubuntu@13.232.41.179 'bash /home/ubuntu/buildJenkis.sh'
+                ssh -i /my-mumbai-key.pem ubuntu@13.127.69.203 'sudo rm -rf /home/ubuntu/googleKeepFrontEnd'
+                ssh -i /my-mumbai-key.pem ubuntu@13.127.69.203 'mv /home/ubuntu/demo-frontend /home/ubuntu/googleKeepFrontEnd'
+                ssh -i /my-mumbai-key.pem ubuntu@13.127.69.203 'bash /home/ubuntu/buildJenkis.sh'
                 echo ===> Build stage
                 '''
             }
